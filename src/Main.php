@@ -12,6 +12,7 @@ use pocketmine\event\player\PlayerInteractEvent;
 use pocketmine\event\player\PlayerMoveEvent;
 use pocketmine\item\VanillaItems;
 use pocketmine\player\Player;
+use jojoe77777\FormAPI\CustomForm;
 
 class Main extends PluginBase implements Listener {
 
@@ -21,16 +22,16 @@ class Main extends PluginBase implements Listener {
 
     public function onPlayerJoin(PlayerJoinEvent $event): void {
         $player = $event->getPlayer();
-        $player->setMetadata("hasMoved", false);
+        $player->setAllowFlight(true); // Enable flight to track movement
     }
 
     public function onPlayerMove(PlayerMoveEvent $event): void {
         $player = $event->getPlayer();
-        if (!$player->getMetadata("hasMoved") && $player->getLocation() !== $event->getFrom()) {
+        if ($player->getLocation() !== $event->getFrom()) {
             $compass = VanillaItems::COMPASS();
             $compass->setCustomName("§eNavigator");
             $player->getInventory()->setItem(4, $compass);
-            $player->setMetadata("hasMoved", true);
+            $player->setAllowFlight(false); // Disable flight after movement
         }
     }
 
