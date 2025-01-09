@@ -13,6 +13,7 @@ use pocketmine\event\player\PlayerMoveEvent;
 use pocketmine\item\VanillaItems;
 use pocketmine\player\Player;
 use jojoe77777\FormAPI\CustomForm;
+use jojoe77777\FormAPI\SimpleForm;
 
 class Main extends PluginBase implements Listener {
 
@@ -50,9 +51,13 @@ class Main extends PluginBase implements Listener {
         $player = $event->getPlayer();
         $item = $event->getItem();
         if ($item->getCustomName() === "§eNavigator") {
-            $form = new CustomForm(function (Player $player, $data) {});
+            $form = new SimpleForm(function (Player $player, $data) {
+                if ($data === 0) {
+                    $player->sendMessage("Soon!");
+                }
+            });
             $form->setTitle("Navigator");
-            $form->addLabel("SOON");
+            $form->addButton("SMP");
             $player->sendForm($form);
         }
     }
