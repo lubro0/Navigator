@@ -16,22 +16,26 @@ use jojoe77777\FormAPI\CustomForm;
 
 class Main extends PluginBase implements Listener {
 
+    private array $compass_get = [];
+
     public function onEnable(): void {
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
     }
 
     public function onPlayerJoin(PlayerJoinEvent $event): void {
         $player = $event->getPlayer();
-        $player->setAllowFlight(true); // Enable flight to track movement
+        $this->compass_get[$player->getName()] = false;
+        $player->setAllowFlight(true);
     }
 
     public function onPlayerMove(PlayerMoveEvent $event): void {
         $player = $event->getPlayer();
-        if ($player->getLocation() !== $event->getFrom()) {
+        if ($player->getLocation() !== $event->getFrom() && !$this->compass_get[$player->getName()]) {
             $compass = VanillaItems::COMPASS();
             $compass->setCustomName("§eNavigator");
             $player->getInventory()->setItem(4, $compass);
-            $player->setAllowFlight(false); // Disable flight after movement
+            $this->compass_get[$player->getName()] = true;
+            $player->setAllowFlight(false);
         }
     }
 
