@@ -5,4 +5,7 @@ branches:
 projects:
   Navigator:
     path: ""
+    lint:
+      ignore:
+        - FormAPI
 ...
