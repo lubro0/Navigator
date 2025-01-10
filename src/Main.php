@@ -24,7 +24,7 @@ class Main extends PluginBase implements Listener {
 
     public function onPlayerJoin(PlayerJoinEvent $event): void {
         $player = $event->getPlayer();
-        $item = Item::fromString("372:0");
+        $item = Item::get(372, 0);
         $item->setCustomName("§9Settings");
         $player->getInventory()->setItem(4, $item);
     }
