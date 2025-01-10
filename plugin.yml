@@ -1,5 +1,5 @@
-name: Navigator
-version: 2.2
-main: lubro\Navigator\Main
-api: 5.0.0
-src-namespace-prefix: lubro\Navigator
+name: LobbyPM
+version: 5.23.2
+main: lobbycraft\LobbyPM\Main
+api: 5.23.2
+src-namespace-prefix: lobbycraft\LobbyPM
