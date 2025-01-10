@@ -28,16 +28,17 @@ class Main extends PluginBase implements Listener {
     public function onPlayerMove(PlayerMoveEvent $event): void {
         $player = $event->getPlayer();
         if (!$this->got_items[$player->getName()]) {
-            $rod = VanillaItems::BLAZE_ROD();
-            $rod->setCustomName("§9Ranks");
-            $player->getInventory()->setItem(3, $rod);
+            $compass = VanillaItems::COMPASS();
+            $compass->setCustomName("§eNavigator");
+            $player->getInventory()->setItem(4, $compass);
+
             $this->got_items[$player->getName()] = true;
         }
     }
 
     public function onPlayerDropItem(PlayerDropItemEvent $event): void {
         $item = $event->getItem();
-        if ($item->getCustomName() === "§9Ranks") {
+        if ($item->getCustomName() === "§eNavigator") {
             $event->cancel();  // Prevent dropping the item
         }
     }
