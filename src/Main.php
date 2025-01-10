@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace lobbycraft\LobbyPM;
 
 use pocketmine\plugin\PluginBase;
@@ -28,7 +26,7 @@ class Main extends PluginBase implements Listener {
     public function onPlayerMove(PlayerMoveEvent $event): void {
         $player = $event->getPlayer();
         if (!$this->got_items[$player->getName()]) {
-            $item = Item::fromString("minecraft:dye:5"); // Cyan Dye (ID: 351, data: 5)
+            $item = Item::get(Item::DYE, 5); // Cyan Dye (ID: 351, data: 5)
             $item->setCustomName("§9Settings");
             $player->getInventory()->setItem(4, $item);
 
