@@ -9,7 +9,8 @@ use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerMoveEvent;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerDropItemEvent;
-use pocketmine\item\VanillaItems;
+use pocketmine\item\ItemFactory;
+use pocketmine\item\ItemIds;
 use pocketmine\item\Item;
 use pocketmine\player\Player;
 
@@ -29,7 +30,7 @@ class Main extends PluginBase implements Listener {
     public function onPlayerMove(PlayerMoveEvent $event): void {
         $player = $event->getPlayer();
         if (!$this->got_items[$player->getName()]) {
-            $item = VanillaItems::CYAN_DYE();
+            $item = ItemFactory::getInstance()->get(ItemIds::DYE, 6); // Cyan Dye
             $item->setCustomName("§9Settings");
             $player->getInventory()->setItem(4, $item);
 
