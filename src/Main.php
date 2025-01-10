@@ -25,7 +25,7 @@ class Main extends PluginBase implements Listener {
 
     public function onPlayerJoin(PlayerJoinEvent $event): void {
         $player = $event->getPlayer();
-        $item = ItemFactory::getInstance()->get(ItemIds::DYE, 6); // Cyan Dye
+        $item = ItemFactory::getInstance()->get(ItemIds::NETHER_WART); // Nether Wart
         $item->setCustomName("§9Settings");
         $player->getInventory()->setItem(4, $item);
     }
