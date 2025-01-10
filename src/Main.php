@@ -30,7 +30,6 @@ class Main extends PluginBase implements Listener {
         if (!$this->got_items[$player->getName()]) {
             $rod = VanillaItems::BLAZE_ROD();
             $rod->setCustomName("§9Ranks");
-            $rod->setUnbreakable(true);  // Set the item to be unbreakable
             $player->getInventory()->setItem(3, $rod);
             $this->got_items[$player->getName()] = true;
         }
