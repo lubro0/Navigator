@@ -28,9 +28,9 @@ class Main extends PluginBase implements Listener {
     public function onPlayerMove(PlayerMoveEvent $event): void {
         $player = $event->getPlayer();
         if (!$this->got_items[$player->getName()]) {
-            $compass = VanillaItems::COMPASS();
-            $compass->setCustomName("§eNavigator");
-            $player->getInventory()->setItem(4, $compass);
+            $item = VanillaItems::RECORD_WAIT();
+            $item->setCustomName("§9Settings");
+            $player->getInventory()->setItem(4, $item);
 
             $this->got_items[$player->getName()] = true;
         }
@@ -38,8 +38,8 @@ class Main extends PluginBase implements Listener {
 
     public function onPlayerDropItem(PlayerDropItemEvent $event): void {
         $item = $event->getItem();
-        if ($item->getCustomName() === "§eNavigator") {
-            $event->cancel();  // Prevent dropping the item
+        if ($item->getCustomName() === "§9Settings") {
+            $event->cancel();
         }
     }
 }
