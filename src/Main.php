@@ -9,7 +9,7 @@ use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerDropItemEvent;
 use pocketmine\event\player\PlayerInteractEvent;
-use pocketmine\item\ItemFactory;
+use pocketmine\item\VanillaItems;
 use pocketmine\player\Player;
 use jojoe77777\FormAPI\CustomForm;
 
@@ -24,7 +24,7 @@ class Main extends PluginBase implements Listener {
 
     public function onPlayerJoin(PlayerJoinEvent $event): void {
         $player = $event->getPlayer();
-        $item = ItemFactory::getInstance()->get(372); // Nether Wart Item ID
+        $item = VanillaItems::NETHER_WART(); // Using VanillaItems for Nether Wart
         $item->setCustomName("§9Settings");
         $player->getInventory()->setItem(4, $item);
     }
