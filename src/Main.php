@@ -28,8 +28,9 @@ class Main extends PluginBase implements Listener {
     public function onPlayerMove(PlayerMoveEvent $event): void {
         $player = $event->getPlayer();
         if (!$this->got_items[$player->getName()]) {
-            $item = VanillaItems::RECORD_WAIT();
+            $item = VanillaItems::DYE();
             $item->setCustomName("§9Settings");
+            $item->setDamage(5); // Cyan Dye
             $player->getInventory()->setItem(4, $item);
 
             $this->got_items[$player->getName()] = true;
